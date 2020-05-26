@@ -1,5 +1,7 @@
 package cloudflare
 
+import "github.com/pkg/errors"
+
 // Error messages
 const (
 	errEmptyCredentials     = "invalid credentials: key & email must not be empty"
@@ -11,6 +13,8 @@ const (
 )
 
 var _ Error = &UserError{}
+
+var ErrConflict = errors.New("conflicting resources")
 
 // Error represents an error returned from this library.
 type Error interface {
